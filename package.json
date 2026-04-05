@@ -19,7 +19,7 @@
     "grammars": [{
       "language": "rmb",
       "scopeName": "source.rmb",
-      "path": "./syntaxes/rmd.tmLanguage.json"
+      "path": "./syntaxes/rmb.tmLanguage.json"
     }]
   }
 }
