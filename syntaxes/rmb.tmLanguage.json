@@ -1,34 +1,45 @@
 {
 	"$schema": "../schema/tmlanguage.json",
 	"name": "rmb",
+	"scopeName": "source.rmb",
 	"patterns": [
-		{ "include": "#line-numbers" },
-    	{ "include": "#comments" },
-    	{ "include": "#strings" },
-    	{ "include": "#keywords" },
-    	{ "include": "#types" },
-    	{ "include": "#numbers" }
+		{ "include": "#numbers" },
+		{ "include": "#comments" },
+		{ "include": "#strings" },
+		{ "include": "#keywords" },
+		{ "include": "#io-commands" },
+		{ "include": "#types" }
 	],
 	"repository": {
 		"keywords": {
 			"patterns": [
+				{ "include": "#keyword.control.rmb" },
+				{ "include": "#keyword.other.rmb" }
+			]
+		},
+		"keyword.control.rmb": {
+			"name": "keyword.control.rmb",
+			"match": "(?i)\\b(IF|THEN|ELSE|END IF|FOR|NEXT|WHILE|END WHILE|SELECT|CASE|END SELECT|EXIT|HALT|STOP|END|SUB|SUBEXIT|SUBEND)\\b"
+		},
+		"keyword.other.rmb": {
+			"name": "keyword.other.rmb",
+			"match": "(?i)\\b(LET|PRINT|DISP|OUTPUT|ENTER|ASSIGN|SCRATCH|LOAD|SAVE|GET|RE-SAVE)\\b"
+		},
+		"types": {
+			"patterns": [
 				{
-					"name": "keyword.control.rmb",
-					"match": "(?i)\\b(IF|THEN|ELSE|END IF|FOR|NEXT|WHILE|END WHILE|SELECT|CASE|END SELECT|EXIT|HALT|STOP|END)\\b"
-				},
-				{
-	                "name": "keyword.other.rmb",
-    	            "match": "(?i)\\b(LET|PRINT|DISP|OUTPUT|ENTER|ASSIGN|SCRATCH|LOAD|SAVE|GET|RE-SAVE)\\b"
+					"name": "storage.type.rmb",
+					"match": "(?i)\\b(INTEGER|REAL|COMPLEX|SHORT)\\b"
 				}
 			]
 		},
-		"types": {
-  			"patterns": [
-        		{
-            		"name": "storage.type.rmb",
-            		"match": "(?i)\\b(INTEGER|REAL|COMPLEX|SHORT)\\b"
-        		}
-    		]
+		"io-commands": {
+			"patterns": [
+				{
+					"name": "support.function.io.rmb",
+					"match": "(?i)\\b(CONNECT|DISCONNECT|CONTROL|STATUS|ABORT|CLEAR|REMOTE|LOCAL|LOCAL LOCKOUT|DISABLE_PORT)\\b"
+				}
+			]
 		},
 		"strings": {
 			"name": "string.quoted.double.rmb",
@@ -49,22 +60,28 @@
 				}
 			]
 		},
-		"line-numbers": {
+		"numbers": {
+			"patterns": [
+				{ "include": "#number-line" },
+				{ "include": "#number-float" },
+				{ "include": "#number-decimal" }
+			]
+		},
+		"number-line": {
 			"patterns": [
 				{
 					"name": "constant.numeric.line-number.rmb",
-        			"match": "^[0-9]+"	
+					"match": "^[0-9]+"
 				}
 			]
 		},
-		"numbers": {
-			"patterns": [
-				{
-					"name": "constant.numeric.rmb",
-					"match": "\\b[0-9]+(\\.[0-9]+)?\\b"
-				}
-			]
+		"number-float": {
+			"name": "constant.numeric.float.rmb",
+			"match": "(?i)\\b[0-9]+(\\.[0-9]+)?E[+-]?[0-9]+\\b"
+		},
+		"number-decimal": {
+			"name": "constant.numeric.rmb",
+			"match": "\\b[0-9]+(\\.[0-9]+)?\\b"
 		}
-	},
-	"scopeName": "source.rmb"
+	}
 }
