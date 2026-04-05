@@ -1,7 +1,7 @@
 {
   "name": "rmb-syntax",
   "displayName": "RMB Syntax",
-  "description": "Syntax highlightitng for RMB language",
+  "description": "Syntax highlighting for RMB language",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.103.0"
@@ -10,16 +10,33 @@
     "Programming Languages"
   ],
   "contributes": {
-    "languages": [{
-      "id": "rmb",
-      "aliases": ["rmb", "rmb"],
-      "extensions": [".rmb"],
-      "configuration": "./language-configuration.json"
-    }],
-    "grammars": [{
-      "language": "rmb",
-      "scopeName": "source.rmb",
-      "path": "./syntaxes/rmb.tmLanguage.json"
-    }]
+    "languages": [
+      {
+        "id": "rmb",
+        "aliases": [
+          "HP-Basic RMB",
+          "rmb"
+        ],
+        "extensions": [
+          ".rmb",
+          ".bas",
+          ".asc"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "rmb",
+        "scopeName": "source.rmb",
+        "path": "./syntaxes/rmb.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "rmb",
+        "path": "./snippets/snippets.json"
+      }
+    ]
   }
 }

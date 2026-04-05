@@ -1,0 +1,10 @@
+{
+    "Example Snippet": {
+        "prefix": "test",
+        "body": [
+            "PRINT \"Hello, $1\"",
+            "$0"
+        ],
+        "description": "これはスニペットの例です"
+    }
+}
