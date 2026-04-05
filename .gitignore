@@ -1,3 +1,8 @@
+# seacret
+/test_codes/
+*.rmb
+*.asc
+
 # Logs
 logs
 *.log
