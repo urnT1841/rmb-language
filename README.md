@@ -1,4 +1,5 @@
 # rmb-syntax README
+*[日本語はこちら](README_ja.md)*
 
 This is the README for your extension "rmb-syntax". After writing up a brief description, we recommend including the following sections.
 
