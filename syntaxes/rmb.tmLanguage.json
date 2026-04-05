@@ -76,8 +76,8 @@
 			]
 		},
 		"number-float": {
-			"name": "constant.numeric.float.rmb",
-			"match": "(?i)\\b[0-9]+(\\.[0-9]+)?E[+-]?[0-9]+\\b"
+    		"name": "constant.numeric.float.rmb",
+    		"match": "\\b[0-9]+(\\.[0-9]+)?[eE][+-]?[0-9]+\\b"
 		},
 		"number-decimal": {
 			"name": "constant.numeric.rmb",
