@@ -2,19 +2,33 @@
 	"$schema": "../schema/tmlanguage.json",
 	"name": "rmb",
 	"patterns": [
-		{ "include": "#keywords" },
-		{ "include": "#strings" },
-		{ "include": "#comments" },
-		{ "include": "#numbers"}
+		{ "include": "#line-numbers" },
+    	{ "include": "#comments" },
+    	{ "include": "#strings" },
+    	{ "include": "#keywords" },
+    	{ "include": "#types" },
+    	{ "include": "#numbers" }
 	],
 	"repository": {
 		"keywords": {
 			"patterns": [
 				{
 					"name": "keyword.control.rmb",
-					"match": "\\b(if|while|for|return)\\b"
+					"match": "(?i)\\b(IF|THEN|ELSE|END IF|FOR|NEXT|WHILE|END WHILE|SELECT|CASE|END SELECT|EXIT|HALT|STOP|END)\\b"
+				},
+				{
+	                "name": "keyword.other.rmb",
+    	            "match": "(?i)\\b(LET|PRINT|DISP|OUTPUT|ENTER|ASSIGN|SCRATCH|LOAD|SAVE|GET|RE-SAVE)\\b"
 				}
 			]
+		},
+		"types": {
+  			"patterns": [
+        		{
+            		"name": "storage.type.rmb",
+            		"match": "(?i)\\b(INTEGER|REAL|COMPLEX|SHORT)\\b"
+        		}
+    		]
 		},
 		"strings": {
 			"name": "string.quoted.double.rmb",
@@ -35,11 +49,21 @@
 				}
 			]
 		},
+		"line-numbers": {
+			"patterns": [
+				{
+					"name": "constant.numeric.line-number.rmb",
+        			"match": "^[0-9]+"	
+				}
+			]
+		},
 		"numbers": {
-			"patterns": [{
-				"name": "constant.numeric.rmb",
-				"match": "\\b[0-9]+(\\.[0-9]+)?\\b"
-			}]
+			"patterns": [
+				{
+					"name": "constant.numeric.rmb",
+					"match": "\\b[0-9]+(\\.[0-9]+)?\\b"
+				}
+			]
 		}
 	},
 	"scopeName": "source.rmb"
