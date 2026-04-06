@@ -1,66 +1,800 @@
 {
-    "Example Snippet": {
-        "prefix": "test",
+    "Address3458": {
+        "prefix": "address3458",
         "body": [
-            "PRINT \"Hello, $1\"",
-            "$0"
+            "Address3458(${1:address})"
         ],
-        "description": "これはスニペットの例です"
+        "description": "Address3458(address) - DVMのGPIBアドレスを返す [cite: 89, 90]"
+    },
+    "Auto_cal": {
+        "prefix": "autocal",
+        "body": [
+            "Auto_cal(${1:interval})"
+        ],
+        "description": "Auto_cal(interval) - セルフキャリブレーションの定期実行設定 [cite: 97, 98]"
+    },
+    "Ch_sw_off_pg": {
+        "prefix": "chswoffpg",
+        "body": [
+            "Ch_sw_off_pg(${1:unit_address})"
+        ],
+        "description": "Ch_sw_off_pg(unit_address) - PGの出力スイッチをオープンにする [cite: 109, 110]"
+    },
+    "Ch_sw_on_pg": {
+        "prefix": "chswonpg",
+        "body": [
+            "Ch_sw_on_pg(${1:unit_address})"
+        ],
+        "description": "Ch_sw_on_pg(unit_address) - PGの出力スイッチをクローズにする [cite: 126, 127]"
+    },
+    "Cmu_adjust": {
+        "prefix": "cmuadjust",
+        "body": [
+            "Cmu_adjust"
+        ],
+        "description": "Cmu_adjust - HSCMUと容量測定パスのキャリブレーション [cite: 143, 144]"
     },
     "Connect": {
         "prefix": "connect",
         "body": [
-            "Connect(${1:port_address}, ${2:pin number})"
+            "Connect(${1:port_addr}, ${2:pin_n}${3:, ${4:pin_n...}})$0"
         ],
-        "description": "Connect (port_address, pin_number)"
+        "description": "Connect(port, pin [, pin...]) - ポートを測定ピンへ接続（最大12ピン） [cite: 147, 151, 167]"
+    },
+    "Connect_chuck": {
+        "prefix": "connectchuck",
+        "body": [
+            "Connect_chuck(${1:port_addr})"
+        ],
+        "description": "Connect_chuck(port) - ポートをチャック接続用ピンへ接続 [cite: 193, 194]"
+    },
+    "Connect_ex": {
+        "prefix": "connectex",
+        "body": [
+            "Connect_ex(${1:port_array(*)}, ${2:pin_array(*)}${3:, ${4:num_elements}})$0"
+        ],
+        "description": "Connect_ex(port_arr, pin_arr [, num]) - 配列による複数接続 [cite: 201, 202, 206]"
+    },
+    "Connect_hf": {
+        "prefix": "connecthf",
+        "body": [
+            "Connect_hf(${1:port_addr}, ${2:pin_n})$0"
+        ],
+        "description": "Connect_hf(port, pin) - Connectと同様（4062F互換用） [cite: 221, 222]"
+    },
+    "Connect_hf_th": {
+        "prefix": "connecthfth",
+        "body": [
+            "Connect_hf_th(${1:port_addr}, ${2:first_pin}, ${3:last_pin})$0"
+        ],
+        "description": "Connect_hf_th(port, first, last) - Connect_thと同様（4062F互換用） [cite: 226, 229]"
+    },
+    "Connect_sr": {
+        "prefix": "connectsr",
+        "body": [
+            "Connect_sr(${1:port_addr}, ${2:conn_status})$0"
+        ],
+        "description": "Connect_sr(port, status) - パルススイッチの切り替え [cite: 232, 237]"
+    },
+    "Connect_th": {
+        "prefix": "connectth",
+        "body": [
+            "Connect_th(${1:port_addr}, ${2:first_pin}, ${3:last_pin})$0"
+        ],
+        "description": "Connect_th(port, first, last) - 指定範囲のピンを接続 [cite: 260, 262]"
+    },
+    "Conv_mode": {
+        "prefix": "convmode",
+        "body": [
+            "Conv_mode(${1:cp}, ${2:gp}, ${3:cs_name}, ${4:rs_name}${5:, ${6:freq}})$0"
+        ],
+        "description": "Conv_mode(cp, gp, cs, rs [, freq]) - 並列から直列回路値へ換算 [cite: 273, 274]"
+    },
+    "Conv_ztr": {
+        "prefix": "convztr",
+        "body": [
+            "Conv_ztr(${1:cp}, ${2:g}, ${3:z_name}, ${4:theta_name}${5:, ${6:freq}})$0"
+        ],
+        "description": "Conv_ztr(cp, g, z, theta [, freq]) - 容量/コンダクタンスをインピーダンス/位相に変換 [cite: 288, 289, 295]"
+    },
+    "Disable_corr": {
+        "prefix": "discorr",
+        "body": [
+            "Disable_corr(${1:h_pin}, ${2:l_pin})"
+        ],
+        "description": "Disable_corr(h_pin, l_pin) - 指定ピンの補正データをクリア [cite: 303, 304]"
     },
     "Disable_port": {
         "prefix": "disport",
         "body": [
-            "Disable_port(${1:port_address}, ${2:pin_number})"
+            "Disable_port(${1:port_or_pin}${2:, ${3:port_or_pin...}})$0"
         ],
-        "description": "Disable_port(port_address, pin_number)"
+        "description": "Disable_port(port_or_pin [, ...]) - 指定ユニットをZero出力状態にする（最大8つ） [cite: 312, 313, 321]"
     },
-    "FNport": {
+    "Disable_port84": {
+        "prefix": "disport84",
+        "body": [
+            "Disable_port84"
+        ],
+        "description": "Disable_port84 - CMUをZero出力状態にする [cite: 330, 331]"
+    },
+    "Disable_spa": {
+        "prefix": "disspa",
+        "body": [
+            "Disable_spa(${1:stat})"
+        ],
+        "description": "Disable_spa(stat) - スペクトラム・アナライザ用ダミーサブプログラム [cite: 335, 341]"
+    },
+    "Dispoff_spa": {
+        "prefix": "dispoffspa",
+        "body": [
+            "Dispoff_spa(${1:stat})"
+        ],
+        "description": "Dispoff_spa(stat) - SPAの画面表示・オートキャル無効化 [cite: 350, 353]"
+    },
+    "Dispon_spa": {
+        "prefix": "disponspa",
+        "body": [
+            "Dispon_spa(${1:stat})"
+        ],
+        "description": "Dispon_spa(stat) - SPAの画面表示・オートキャル有効化 [cite: 361, 363]"
+    },
+    "Error_display": {
+        "prefix": "errdisp",
+        "body": [
+            "Error_display(${1:mode})"
+        ],
+        "description": "Error_display(mode) - TISエラーメッセージ表示制御 [cite: 372, 373]"
+    },
+    "Error_info": {
+        "prefix": "errinfo",
+        "body": [
+            "Error_info(${1:err_num_arr(*)}${2:, ${3:err_msg_name}, ${4:category}})$0"
+        ],
+        "description": "Error_info(err_arr [, msg, cat]) - TISエラー番号とメッセージ取得 [cite: 381, 382, 385]"
+    },
+    "Error_info_pg": {
+        "prefix": "errinfopg",
+        "body": [
+            "Error_info_pg(${1:err_msg_arr(*)})"
+        ],
+        "description": "Error_info_pg(err_msg_arr) - PGで発生したエラーメッセージ取得 [cite: 394, 398, 400]"
+    },
+    "FNAux": {
+        "prefix": "fnaux",
+        "body": [
+            "FNAux(${1:aux_port_n})"
+        ],
+        "description": "FNAux(aux_n) - 4062 AUXポートのアドレスを返す [cite: 409, 411]"
+    },
+    "FNCmh": {
+        "prefix": "fncmh",
+        "body": [
+            "FNCmh"
+        ],
+        "description": "FNCmh - 4062 CMHポートアドレス(32708)を返す [cite: 422, 425]"
+    },
+    "FNCml": {
+        "prefix": "fncml",
+        "body": [
+            "FNCml"
+        ],
+        "description": "FNCml - 4062 CMLポートアドレス(32709)を返す [cite: 432, 437]"
+    },
+    "FNCmu84": {
+        "prefix": "fncmu84",
+        "body": [
+            "FNCmu84(${1:identifier})"
+        ],
+        "description": "FNCmu84(id) - 4062 CMU84端子アドレスを返す [cite: 443, 448]"
+    },
+    "FNGcmu": {
+        "prefix": "fngcmu",
+        "body": [
+            "FNGcmu"
+        ],
+        "description": "FNGcmu - 4062 GCMU(ガード端子)アドレス(32711)を返す [cite: 459, 460]"
+    },
+    "FNGnd": {
+        "prefix": "fngnd",
+        "body": [
+            "FNGnd"
+        ],
+        "description": "FNGnd - 4062 GNDUポートアドレス(32707)を返す [cite: 468, 469]"
+    },
+    "FNGsmu": {
+        "prefix": "fngsmu",
+        "body": [
+            "FNGsmu"
+        ],
+        "description": "FNGsmu - 4062 GSMU(SMU1ガード)アドレス(32710)を返す [cite: 479, 480]"
+    },
+    "FNHf": {
+        "prefix": "fnhf",
+        "body": [
+            "FNHf(${1:hf_port_n})"
+        ],
+        "description": "FNHf(hf_n) - 4062 HFポートのアドレスを返す [cite: 488, 489]"
+    },
+    "FNPg": {
+        "prefix": "fnpg",
+        "body": [
+            "FNPg(${1:pgu_unit_n})"
+        ],
+        "description": "FNPg(pgu_n) - 4062 PGUユニットアドレスを返す [cite: 502, 504]"
+    },
+    "FNPort": {
         "prefix": "fnport",
         "body": [
-            "FNport(${1:port_type}, ${2:port_address})"
+            "FNPort(${1:port_type}, ${2:port_n})"
         ],
-        "description": "FNport(port_type, port_address)"
+        "description": "FNPort(type, n) - 指定したポートのアドレスを返す [cite: 512, 516]"
     },
-    "FNsmu": {
+    "FNSmu": {
         "prefix": "fnsmu",
         "body": [
-            "FNsmu(${1:port_number})"
+            "FNSmu(${1:port_n})"
         ],
-        "description": "FNsmu(port_number)"
+        "description": "FNSmu(n) - 4062 SMUポートのアドレスを返す [cite: 555, 557]"
+    },
+    "FNUnitsmu": {
+        "prefix": "fnunitsmu",
+        "body": [
+            "FNUnitsmu(${1:smu_unit_n})"
+        ],
+        "description": "FNUnitsmu(n) - 4062 SMUユニットのアドレスを返す [cite: 566, 572]"
+    },
+    "FNVm": {
+        "prefix": "fnvm",
+        "body": [
+            "FNVm(${1:vm_unit_n})"
+        ],
+        "description": "FNVm(n) - 4062 VMユニットのアドレスを返す [cite: 582, 583]"
+    },
+    "FNVs": {
+        "prefix": "fnvs",
+        "body": [
+            "FNVs(${1:vs_unit_n})"
+        ],
+        "description": "FNVs(n) - 4062 VSユニットのアドレスを返す [cite: 594, 595]"
     },
     "Force_i": {
         "prefix": "forcei",
         "body": [
-            "Force_i(${1:SMU_port_address}, ${2:pin_number}, ${3:, ${4:0},${5:0}})$0"
+            "Force_i(${1:port_addr}, ${2:pin_n}, ${3:current}${4:, ${5:range}, ${6:v_comp}})$0"
         ],
-        "description": "Force_i(SMU_port_address, pin_number, [,output_current, output_range, voltage_compliance])"
+        "description": "Force_i(port, pin, current [, range, v_comp]) - 電流出力 [cite: 602, 603, 607]"
     },
-    "Force_mes": {
-        "prefix": "forcemes",
+    "Force_meas": {
+        "prefix": "forcemeas",
         "body": [
-            "Force_mes(${1:Source_port}, ${2:Source_pin}, ${3:measurment_port}, ${4:mearsurement_pin}, ${5:output_mode}, ${6:output_value}, ${7:measurement_value_name})"
+            "Force_meas(${1:src_port}, ${2:src_pin}, ${3:meas_port}, ${4:meas_pin}, ${5:mode}, ${6:value}, ${7:meas_val_name}${8:, ${9:out_range}, ${10:meas_range}, ${11:out_comp}, ${12:hold_t}, ${13:ts_name}})$0"
         ],
-        "description": "Force_mes(Source_port, Source_pin, measurment_port, mearsurement_pin, output_mode, output_value, measurement_value_name)"
+        "description": "Force_meas(...) - 直流印加と測定を同時実行 [cite: 641, 642, 651]"
+    },
+    "Force_pg": {
+        "prefix": "forcepg",
+        "body": [
+            "Force_pg(${1:num_period}${2:, ${3:pulse_period}})$0"
+        ],
+        "description": "Force_pg(count [, period]) - 設定されたPGからパルス出力 [cite: 685, 689, 691]"
     },
     "Force_v": {
         "prefix": "forcev",
         "body": [
-            "Force_v(${1:SMU_addr}, ${2:pin_number}${3:, ${4:v_out},${5:range},${6:i_comp}})$0"
+            "Force_v(${1:port_addr}, ${2:pin_n}, ${3:voltage}${4:, ${5:range}, ${6:i_comp}})$0"
         ],
-        "description": "Force_v(SMU port address, pin_number, [,output_voltage,output_range,current_compliance])"
+        "description": "Force_v(port, pin, voltage [, range, i_comp]) - 電圧/DCバイアス出力 [cite: 717, 722, 725]"
     },
-    "set_cv function (with defaults)": {
+    "Force_v84": {
+        "prefix": "forcev84",
+        "body": [
+            "Force_v84(${1:dc_bias_v})"
+        ],
+        "description": "Force_v84(v) - CMUの内部直流バイアス電圧設定 [cite: 798, 799]"
+    },
+    "Frequency": {
+        "prefix": "freq",
+        "body": [
+            "Frequency(${1:freq})"
+        ],
+        "description": "Frequency(freq) - HSCMU/CMUの測定周波数設定 [cite: 817, 818]"
+    },
+    "Frequency84": {
+        "prefix": "freq84",
+        "body": [
+            "Frequency84(${1:freq})"
+        ],
+        "description": "Frequency84(freq) - CMUの測定周波数設定（Set_freqと等価） [cite: 841]"
+    },
+    "Get_freq": {
+        "prefix": "getfreq",
+        "body": [
+            "Get_freq(${1:freq_var})"
+        ],
+        "description": "Get_freq(freq) - 直近に設定された実際の測定周波数を取得 [cite: 842]"
+    },
+    "Get_freq_step": {
+        "prefix": "getfreqstep",
+        "body": [
+            "Get_freq_step(${1:freq_steps_var})"
+        ],
+        "description": "Get_freq_step(steps) - Z/θ-f掃引のステップ数を取得 [cite: 843]"
+    },
+    "Get_modelname": {
+        "prefix": "getmodel",
+        "body": [
+            "Get_modelname(${1:model_var})"
+        ],
+        "description": "Get_modelname(model) - テストシステムのモデル名を取得 [cite: 843, 844]"
+    },
+    "Gnd_open_guard": {
+        "prefix": "gndopenguard",
+        "body": [
+            "Gnd_open_guard(${1:guard_connect})"
+        ],
+        "description": "Gnd_open_guard(guard_connect) - 未使用ピンのガード端子接続設定 [cite: 844, 1004]"
+    },
+    "High_voltage_state": {
+        "prefix": "hivoltage",
+        "body": [
+            "High_voltage_state(${1:flag})"
+        ],
+        "description": "High_voltage_state(flag) - 高電圧状態(40V以上)をシステムに通知 [cite: 846]"
+    },
+    "Htos": {
+        "prefix": "htos",
+        "body": [
+            "Htos(${1:num}, ${2:h11(*)}, ${3:h21(*)}, ${4:h12(*)}, ${5:h22(*)}, ${6:s11(*)}, ${7:s21(*)}, ${8:s12(*)}, ${9:s22(*)}${10:, ${11:z0}})$0"
+        ],
+        "description": "Htos(num, h_arr, s_arr [, z0]) - HパラメータをSパラメータに変換 [cite: 847, 848]"
+    },
+    "Htoy": {
+        "prefix": "htoy",
+        "body": [
+            "Htoy(${1:num}, ${2:h11(*)}, ${3:h21(*)}, ${4:h12(*)}, ${5:h22(*)}, ${6:y11(*)}, ${7:y21(*)}, ${8:y12(*)}, ${9:y22(*)})"
+        ],
+        "description": "Htoy(num, h_arr, y_arr) - HパラメータをYパラメータに変換 [cite: 849, 850]"
+    },
+    "Htoz": {
+        "prefix": "htoz",
+        "body": [
+            "Htoz(${1:num}, ${2:h11(*)}, ${3:h21(*)}, ${4:h12(*)}, ${5:h22(*)}, ${6:z11(*)}, ${7:z21(*)}, ${8:z12(*)}, ${9:z22(*)})"
+        ],
+        "description": "Htoz(num, h_arr, z_arr) - HパラメータをZパラメータに変換 [cite: 851, 852]"
+    },
+    "Init_pg": {
+        "prefix": "initpg",
+        "body": [
+            "Init_pg"
+        ],
+        "description": "Init_pg - システム初期化（Init_systemと等価、4062F互換） [cite: 853]"
+    },
+    "Init_spa": {
+        "prefix": "initspa",
+        "body": [
+            "Init_spa(${1:addr}, ${2:stat})"
+        ],
+        "description": "Init_spa(addr, stat) - SPA初期化用ダミー [cite: 854]"
+    },
+    "Init_system": {
+        "prefix": "initsys",
+        "body": [
+            "Init_system"
+        ],
+        "description": "Init_system - システム全体を初期状態にリセット "
+    },
+    "Is_on_line": {
+        "prefix": "isonline",
+        "body": [
+            "Is_on_line(${1:online_flag})"
+        ],
+        "description": "Is_on_line(flag) - オンライン/オフライン状態を取得 [cite: 860]"
+    },
+    "Ivt_measure": {
+        "prefix": "ivtmeas",
+        "body": [
+            "Ivt_measure(${1:port_or_pin}, ${2:mode}, ${3:measure_arr(*)}${4:, ${5:status_arr(*)}, ${6:range}, ${7:ts_arr(*)}})$0"
+        ],
+        "description": "Ivt_measure(port, mode, data [, status, range, ts]) - サンプリング測定実行 [cite: 862, 863]"
+    },
+    "Ivt_set_iv": {
+        "prefix": "ivtsetiv",
+        "body": [
+            "Ivt_set_iv(${1:port_or_pin}, ${2:mode}, ${3:bias}, ${4:base}${5:, ${6:compliance}, ${7:range}, ${8:stop_mode}, ${9:post_mode}})$0"
+        ],
+        "description": "Ivt_set_iv(port, mode, bias, base [, comp, range, stop, post]) - 同期バイアス設定 [cite: 865, 866]"
+    },
+    "Ivt_set_sync": {
+        "prefix": "ivtsync",
+        "body": [
+            "Ivt_set_sync(${1:port_or_pin}, ${2:mode}, ${3:bias}, ${4:base}${5:, ${6:compliance}, ${7:range}})$0"
+        ],
+        "description": "Ivt_set_sync(port, mode, bias, base [, comp, range]) - 同期バイアス追加設定 [cite: 869, 870]"
+    },
+    "Ivt_set_t": {
+        "prefix": "ivtsett",
+        "body": [
+            "Ivt_set_t(${1:smpl_mode}, ${2:bias_hold}, ${3:smpl_interval}, ${4:num_smpl}${5:, ${6:base_hold}})$0"
+        ],
+        "description": "Ivt_set_t(mode, hold, interval, num [, base_hold]) - サンプリング時間設定 [cite: 872]"
+    },
+    "Load_corr_data": {
+        "prefix": "loadcorr",
+        "body": [
+            "Load_corr_data(${1:\"file_name\"})"
+        ],
+        "description": "Load_corr_data(file) - ファイルから補正データを読み込み [cite: 874]"
+    },
+    "Load_hfportmap": {
+        "prefix": "loadhfmap",
+        "body": [
+            "Load_hfportmap(${1:\"file_name\"})"
+        ],
+        "description": "Load_hfportmap(file) - HFポートマップファイルを読み込み [cite: 875]"
+    },
+    "Load_pg": {
+        "prefix": "loadpg",
+        "body": [
+            "Load_pg(${1:\"file_name\"})"
+        ],
+        "description": "Load_pg(file) - PG設定ファイルを読み込み [cite: 876]"
+    },
+    "Load_pg_conf": {
+        "prefix": "loadpgconf",
+        "body": [
+            "Load_pg_conf(${1:\"file_name\"})"
+        ],
+        "description": "Load_pg_conf(file) - PG構成情報ファイルを読み込み [cite: 877]"
+    },
+    "Long_cal": {
+        "prefix": "longcal",
+        "body": [
+            "Long_cal"
+        ],
+        "description": "Long_cal - すべてのSMU/HSCMU/SPGUの自己校正を開始 [cite: 878]"
+    },
+    "Measure_bdv": {
+        "prefix": "measbdv",
+        "body": [
+            "Measure_bdv(${1:v_val_name}, ${2:stat_val_name}${3:, ${4:det_interval}})$0"
+        ],
+        "description": "Measure_bdv(v, stat [, interval]) - ブレークダウン電圧測定 [cite: 138, 139]"
+    },
+    "Measure_cmu84": {
+        "prefix": "meascmu84",
+        "body": [
+            "Measure_cmu84(${1:cp_name}, ${2:gp_name}${3:, ${4:meas_range}})$0"
+        ],
+        "description": "Measure_cmu84(cp, gp [, range]) - 容量/コンダクタンス測定(4062互換) [cite: 882]"
+    },
+    "Measure_cpg": {
+        "prefix": "meascpg",
+        "body": [
+            "Measure_cpg(${1:cp_name}, ${2:gp_name}${3:, ${4:meas_range}, ${5:ts_name}})$0"
+        ],
+        "description": "Measure_cpg(cp, gp [, range, ts]) - HSCMUによる容量測定 [cite: 886, 887]"
+    },
+    "Measure_csrs": {
+        "prefix": "meascsrs",
+        "body": [
+            "Measure_csrs(${1:cs_name}, ${2:rs_name}${3:, ${4:meas_range}, ${5:ts_name}})$0"
+        ],
+        "description": "Measure_csrs(cs, rs [, range, ts]) - HSCMUによる直列等価回路測定 [cite: 889, 890]"
+    },
+    "Measure_i": {
+        "prefix": "measi",
+        "body": [
+            "Measure_i(${1:port_or_pin}, ${2:i_val_name}${3:, ${4:meas_range}, ${5:ts_name}})$0"
+        ],
+        "description": "Measure_i(port, i [, range, ts]) - 直流電流測定 [cite: 892, 893]"
+    },
+    "Measure_ileak": {
+        "prefix": "measileak",
+        "body": [
+            "Measure_ileak(${1:port_or_pin}, ${2:i_val_name}, ${3:stat_name}${4:, ${5:det_interval}})$0"
+        ],
+        "description": "Measure_ileak(port, i, stat [, interval]) - 洩れ電流測定 [cite: 899, 900]"
+    },
+    "Measure_m": {
+        "prefix": "measm",
+        "body": [
+            "Measure_m(${1:port_arr(*)}, ${2:res_arr(*)}${3:, ${4:range_arr(*)}, ${5:ts_arr(*)}})$0"
+        ],
+        "description": "Measure_m(ports, results [, ranges, times]) - 複数チャネル順次測定 [cite: 902]"
+    },
+    "Measure_p": {
+        "prefix": "measp",
+        "body": [
+            "Measure_p(${1:port_or_pin}, ${2:mode}, ${3:val_name}${4:, ${5:meas_range}})$0"
+        ],
+        "description": "Measure_p(port, mode, val [, range]) - パルス・スポット測定 [cite: 904, 905]"
+    },
+    "Measure_spa": {
+        "prefix": "measspa",
+        "body": [
+            "Measure_spa(${1:osc_freq}, ${2:amp}, ${3:delay}, ${4:n}, ${5:fcr}, ${6:stat})"
+        ],
+        "description": "Measure_spa(freq, amp, delay, n, fcr, stat) - 発振周波数/振幅/ゲート遅延測定 [cite: 909]"
+    },
+    "Measure_v": {
+        "prefix": "measv",
+        "body": [
+            "Measure_v(${1:port_or_pin}, ${2:v_val_name}${3:, ${4:meas_range}, ${5:ts_name}})$0"
+        ],
+        "description": "Measure_v(port, v [, range, ts]) - 直流電圧測定 [cite: 912, 913]"
+    },
+    "Measure_vth": {
+        "prefix": "measvth",
+        "body": [
+            "Measure_vth(${1:region}, ${2:vth_var}, ${3:stat_var}, ${4:gm_var}, ${5:id_var}${6:, ${7:num_smpl}, ${8:drain_v}})$0"
+        ],
+        "description": "Measure_vth(region, vth, stat, gm, id [, num, v]) - FETしきい値電圧測定 [cite: 916, 917]"
+    },
+    "Measure_v3458": {
+        "prefix": "measv3458",
+        "body": [
+            "Measure_v3458(${1:v_val_name})"
+        ],
+        "description": "Measure_v3458(v) - DVMによる電圧測定 [cite: 919]"
+    },
+    "Measure_ztr": {
+        "prefix": "measztr",
+        "body": [
+            "Measure_ztr(${1:z_name}, ${2:theta_name}${3:, ${4:impedance_range}, ${5:ts_name}})$0"
+        ],
+        "description": "Measure_ztr(z, theta [, range, ts]) - HSCMUによるインピーダンス/位相測定 [cite: 920, 921]"
+    },
+    "Open_corr84": {
+        "prefix": "opencorr84",
+        "body": [
+            "Open_corr84"
+        ],
+        "description": "Open_corr84 - CMUのOPEN補正測定実行 [cite: 923]"
+    },
+    "Open_corr_th": {
+        "prefix": "opencorrth",
+        "body": [
+            "Open_corr_th"
+        ],
+        "description": "Open_corr_th - 指定測定ピン先に対するOPEN補正実行 [cite: 924]"
+    },
+    "P_ivt_measure": {
+        "prefix": "pivtmeas",
+        "body": [
+            "P_ivt_measure(${1:mode_arr(*)}, ${2:measure_2d_arr(*,*)}, ${3:port_arr(*)}${4:, ${5:range_arr(*)}, ${6:ts_arr(*)}})$0"
+        ],
+        "description": "P_ivt_measure(modes, data, ports [, ranges, ts]) - 同期パラレル・サンプリング測定"
+    },
+    "P_ivt_set_iv": {
+        "prefix": "pivtsetiv",
+        "body": [
+            "P_ivt_set_iv(${1:port_arr(*)}, ${2:mode_arr(*)}, ${3:bias_arr(*)}, ${4:base_arr(*)}${5:, ${6:range_arr(*)}, ${7:comp_arr(*)}})$0"
+        ],
+        "description": "P_ivt_set_iv(ports, modes, biases, bases [, ranges, comps]) - パラレル・サンプリング用バイアス設定"
+    },
+    "P_ivt_status": {
+        "prefix": "pivtstat",
+        "body": [
+            "P_ivt_status(${1:port_arr(*)}, ${2:status_2d_arr(*,*)})"
+        ],
+        "description": "P_ivt_status(ports, status_2d) - パラレル・サンプリングデータのステータス取得"
+    },
+    "P_measure_m": {
+        "prefix": "pmeasm",
+        "body": [
+            "P_measure_m(${1:parallel_mode}, ${2:port_arr(*)}, ${3:res_arr(*)}${4:, ${5:range_arr(*)}, ${6:ts_arr(*)}})$0"
+        ],
+        "description": "P_measure_m(mode, ports, results [, ranges, times]) - 同期パラレル直流測定"
+    },
+    "P_measure_vth": {
+        "prefix": "pmeasvth",
+        "body": [
+            "P_measure_vth(${1:region}, ${2:vth_arr(*)}, ${3:stat_arr(*)}, ${4:gm_arr(*)}, ${5:id_arr(*)}${6:, ${7:num_smpl}, ${8:drain_v_arr(*)}})$0"
+        ],
+        "description": "P_measure_vth(region, vths, stats, gms, ids [, num, vs]) - パラレルFETしきい値電圧測定"
+    },
+    "Port_status": {
+        "prefix": "portstat",
+        "body": [
+            "Port_status(${1:port_or_pin}, ${2:status_var}${3:, ${4:ts_var}})$0"
+        ],
+        "description": "Port_status(port, status [, ts]) - 指定ポートの最終測定ステータスを取得"
+    },
+    "P_rsweep_miv": {
+        "prefix": "prsweepmiv",
+        "body": [
+            "P_rsweep_miv(${1:port_arr(*)}, ${2:range_arr(*)}, ${3:meas_arr(*)}, ${4:stat_arr(*)}, ${5:src_arr(*)}${6:, ${7:dummy_arr(*)}, ${8:ts_arr(*)}})$0"
+        ],
+        "description": "P_rsweep_miv(ports, ranges, meas, stats, src [, dummy, ts]) - パラレル・リアルタイム掃引"
+    },
+    "P_set_bdv_srch": {
+        "prefix": "psetbdvsrch",
+        "body": [
+            "P_set_bdv_srch(${1:para_mode}, ${2:port_arr(*)}, ${3:v_start_arr(*)}, ${4:v_stop_arr(*)}, ${5:v_step_arr(*)}, ${6:i_bdv_arr(*)})$0"
+        ],
+        "description": "P_set_bdv_srch(mode, ports, starts, stops, steps, comps) - パラレル・ブレークダウン電圧サーチ設定"
+    },
+    "P_set_iv": {
+        "prefix": "psetiv",
+        "body": [
+            "P_set_iv(${1:para_mode}, ${2:port_arr(*)}, ${3:mode_arr(*)}, ${4:v_start_arr(*)}, ${5:v_stop_arr(*)}, ${6:steps})$0"
+        ],
+        "description": "P_set_iv(mode, ports, modes, starts, stops, steps) - パラレルI-V掃引設定"
+    },
+    "P_set_lsearch": {
+        "prefix": "psetlsearch",
+        "body": [
+            "P_set_lsearch(${1:para_mode}, ${2:src_port_arr(*)}, ${3:sns_port_arr(*)}, ${4:mode_arr(*)}, ${5:v_start_arr(*)}, ${6:v_stop_arr(*)}, ${7:v_step_arr(*)}, ${8:v_target_arr(*)})$0"
+        ],
+        "description": "P_set_lsearch(para, src, sns, modes, starts, stops, steps, targets) - パラレル・リニアサーチ設定"
+    },
+    "P_sweep_miv": {
+        "prefix": "psweepmiv",
+        "body": [
+            "P_sweep_miv(${1:port_arr(*)}, ${2:range_arr(*)}, ${3:meas_2d_arr(*,*)}, ${4:src_2d_arr(*,*)})"
+        ],
+        "description": "P_sweep_miv(ports, ranges, meas_2d, src_2d) - パラレル階段波掃引実行"
+    },
+    "Range_mode": {
+        "prefix": "rangemode",
+        "body": [
+            "Range_mode(${1:port_or_pin}, ${2:mode}${3:, ${4:ratio}})$0"
+        ],
+        "description": "Range_mode(port, mode [, ratio]) - 電流測定オートレンジ動作の変更"
+    },
+    "Rfs_measure_s2": {
+        "prefix": "rfsmeass2",
+        "body": [
+            "Rfs_measure_s2(${1:p1}, ${2:p2}, ${3:f_arr(*)}, ${4:s11(*)}, ${5:s21(*)}, ${6:s12(*)}, ${7:s22(*)}${8:, ${9:mode}})$0"
+        ],
+        "description": "Rfs_measure_s2(p1, p2, f, s11, s21, s12, s22 [, mode]) - 2ポートSパラメータ測定"
+    },
+    "Rsearch": {
+        "prefix": "rsearch",
+        "body": [
+            "Rsearch(${1:src_val}, ${2:stat}, ${3:sns_val}${4:, ${5:ts}})$0"
+        ],
+        "description": "Rsearch(src, stat, sns [, ts]) - リアルタイム・サーチ測定実行"
+    },
+    "Rsweep_iv": {
+        "prefix": "rsweepiv",
+        "body": [
+            "Rsweep_iv(${1:port_or_pin}, ${2:mode}, ${3:range}, ${4:meas_val}, ${5:stat}, ${6:src_val}${7:, ${8:dummy}, ${9:ts}})$0"
+        ],
+        "description": "Rsweep_iv(port, mode, range, meas, stat, src [, dummy, ts]) - リアルタイム掃引実行"
+    },
+    "Set_adc": {
+        "prefix": "setadc",
+        "body": [
+            "Set_adc(${1:adc}, ${2:integ_mode}, ${3:integ_value}, ${4:auto_zero})$0"
+        ],
+        "description": "Set_adc(adc, mode, val, zero) - SMU用ADCの動作パラメータ設定 [cite: 1111]"
+    },
+    "Set_bdv": {
+        "prefix": "setbdv",
+        "body": [
+            "Set_bdv(${1:port_addr}, ${2:v_start}, ${3:v_stop}, ${4:i_bdv}${5:, ${6:hold}, ${7:delay}})$0"
+        ],
+        "description": "Set_bdv(port, start, stop, i_bdv [, hold, delay]) - 疑似パルス・ブレークダウン電圧測定設定 [cite: 1124, 1125]"
+    },
+    "Set_cmu": {
+        "prefix": "setcmu",
+        "body": [
+            "Set_cmu(${1:integ_mode}, ${2:multiple}, ${3:signal_level})$0"
+        ],
+        "description": "Set_cmu(mode, mult, level) - HSCMUの積分時間とテスト信号レベル設定 [cite: 1141]"
+    },
+    "Set_cv": {
         "prefix": "setcv",
         "body": [
-            "set_cv(${1:mode}, ${2:Vstart}, ${3:Vstop}, ${4:Nsteps}${5:, ${6:0}, ${7:0}, ${8:0}})$0"
+            "Set_cv(${1:mode}, ${2:v_start}, ${3:v_stop}, ${4:steps}${5:, ${6:v_hold}, ${7:v_delay}, ${8:stop_mode}})$0"
         ],
-        "description": "set_cv(mode, Vstart, Vstop, Nsteps [, Vhold=0, Vdelay=0, stop_mode=0])"
+        "description": "Set_cv(mode, start, stop, steps [, hold, delay, stop]) - HSCMU用C/G-V掃引設定 [cite: 1150]"
+    },
+    "Set_freq": {
+        "prefix": "setfreq",
+        "body": [
+            "Set_freq(${1:port_addr}, ${2:frequency})$0"
+        ],
+        "description": "Set_freq(port, freq) - HSCMU/CMUの測定周波数設定 [cite: 1160]"
+    },
+    "Set_iv": {
+        "prefix": "setiv",
+        "body": [
+            "Set_iv(${1:port_addr}, ${2:sweep_mode}, ${3:out_range}, ${4:start}, ${5:stop}, ${6:steps})$0"
+        ],
+        "description": "Set_iv(port, mode, range, start, stop, steps) - I-V掃引条件設定 [cite: 1168]"
+    },
+    "Set_pbias": {
+        "prefix": "setpbias",
+        "body": [
+            "Set_pbias(${1:port_addr}, ${2:mode}, ${3:range}, ${4:base}, ${5:peak}, ${6:width}, ${7:period})$0"
+        ],
+        "description": "Set_pbias(port, mode, range, base, peak, width, period) - パルス・バイアス条件設定 [cite: 1192, 1195]"
+    },
+    "Set_piv": {
+        "prefix": "setpiv",
+        "body": [
+            "Set_piv(${1:port_addr}, ${2:sweep_mode}, ${3:range}, ${4:base}, ${5:start}, ${6:stop}, ${7:steps}, ${8:width}, ${9:period})$0"
+        ],
+        "description": "Set_piv(port, mode, range, base, start, stop, steps, width, period) - パルス掃引条件設定 [cite: 1200, 1203]"
+    },
+    "Set_vth": {
+        "prefix": "setvth",
+        "body": [
+            "Set_vth(${1:gate_port}, ${2:drain_port}, ${3:vg_start}, ${4:vg_stop}, ${5:vg_step}, ${6:id_start})$0"
+        ],
+        "description": "Set_vth(gate, drain, start, stop, step, id_start) - FETしきい値電圧測定パラメータ設定 [cite: 1247]"
+    },
+    "Short_cal": {
+        "prefix": "shortcal",
+        "body": [
+            "Short_cal"
+        ],
+        "description": "Short_cal - SMU/HSCMU/SPGUの自己校正（高速版） [cite: 1252]"
+    },
+    "Spgu_mode": {
+        "prefix": "spgumode",
+        "body": [
+            "Spgu_mode(${1:mode})$0"
+        ],
+        "description": "Spgu_mode(mode) - SPGUの動作モード(PG/ALWG)設定 [cite: 1261]"
+    },
+    "Stand_by_port": {
+        "prefix": "standby",
+        "body": [
+            "Stand_by_port(${1:port_or_pin})$0"
+        ],
+        "description": "Stand_by_port(port) - 指定ポートをスタンドバイ・モード（出力維持）にする [cite: 1263, 1264]"
+    },
+    "Start_pg": {
+        "prefix": "startpg",
+        "body": [
+            "Start_pg(${1:num_period})$0"
+        ],
+        "description": "Start_pg(count) - 設定された全PGのパルス出力を開始 [cite: 1265]"
+    },
+    "Stop_pg": {
+        "prefix": "stoppg",
+        "body": [
+            "Stop_pg"
+        ],
+        "description": "Stop_pg - PGのパルス出力を停止 [cite: 1272]"
+    },
+    "Sweep_cv": {
+        "prefix": "sweepcv",
+        "body": [
+            "Sweep_cv(${1:range}, ${2:cap_arr(*)}, ${3:cond_arr(*)}, ${4:bias_arr(*)})$0"
+        ],
+        "description": "Sweep_cv(range, cap, cond, bias) - HSCMUによるC/G-V掃引実行 [cite: 1282]"
+    },
+    "Sweep_iv": {
+        "prefix": "sweepiv",
+        "body": [
+            "Sweep_iv(${1:port_addr}, ${2:mode}, ${3:range}, ${4:meas_arr(*)}, ${5:src_arr(*)})$0"
+        ],
+        "description": "Sweep_iv(port, mode, range, meas, src) - 各種掃引（階段波/パルス等）実行 [cite: 1296]"
+    },
+    "Sweep_miv": {
+        "prefix": "sweepmiv",
+        "body": [
+            "Sweep_miv(${1:port_arr(*)}, ${2:range_arr(*)}, ${3:meas_arr_1(*)}${4:, ${5:src_arr(*)}})$0"
+        ],
+        "description": "Sweep_miv(ports, ranges, meas1 [, src]) - 複数チャネル階段波掃引実行 [cite: 1303]"
+    },
+    "Sync_th": {
+        "prefix": "syncth",
+        "body": [
+            "Sync_th(${1:wait_time})$0"
+        ],
+        "description": "Sync_th(wait) - テストヘッドCPUの実行完了まで待機 [cite: 1316]"
+    },
+    "Wait_th": {
+        "prefix": "waitth",
+        "body": [
+            "Wait_th(${1:wait_time})$0"
+        ],
+        "description": "Wait_th(wait) - テストヘッド側で指定時間待機 [cite: 1322]"
     }
 }
