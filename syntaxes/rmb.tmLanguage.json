@@ -4,22 +4,16 @@
 	"scopeName": "source.rmb",
 	"patterns": [
 		{
-			"include": "#numbers"
-		},
-		{
 			"include": "#comments"
 		},
 		{
-			"include": "#device-params"
+			"include": "#strings"
+		},
+		{
+			"include": "#numbers"
 		},
 		{
 			"include": "#user-functions"
-		},
-		{
-			"include": "#tis-functions"
-		},
-		{
-			"include": "#strings"
 		},
 		{
 			"include": "#keywords"
@@ -29,6 +23,12 @@
 		},
 		{
 			"include": "#types"
+		},
+		{
+			"include": "#device-params"
+		},
+		{
+			"include": "#tis-functions"
 		}
 	],
 	"repository": {
@@ -72,8 +72,15 @@
 				},
 				{
 					"comment": "3. GOTO/GOSUBのジャンプ先（呼び出し側）",
-					"match": "(?i)(?<=\\b(?:GOTO|GOSUB)\\s+)([a-zA-Z_][a-zA-Z0-9_]*)",
-					"name": "entity.name.label.rmb"
+					"match": "(?i)\\b(GOTO|GOSUB)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\b",
+					"captures": {
+						"1": {
+							"name": "keyword.control.rmb"
+						},
+						"2": {
+							"name": "constant.other.symbol.rmb"
+						}
+					}
 				},
 				{
 					"comment": "4. 数学関数（ABS, SQRなど）",
