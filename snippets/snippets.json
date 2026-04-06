@@ -7,10 +7,59 @@
         ],
         "description": "これはスニペットの例です"
     },
+    "Connect": {
+        "prefix": "connect",
+        "body": [
+            "Connect(${1:port_address}, ${2:pin number})"
+        ],
+        "description": "Connect (port_address, pin_number)"
+    },
+    "Disable_port": {
+        "prefix": "disport",
+        "body": [
+            "Disable_port(${1:port_address}, ${2:pin_number})"
+        ],
+        "description": "Disable_port(port_address, pin_number)"
+    },
+    "FNport": {
+        "prefix": "fnport",
+        "body": [
+            "FNport(${1:port_type}, ${2:port_address})"
+        ],
+        "description": "FNport(port_type, port_address)"
+    },
+    "FNsmu": {
+        "prefix": "fnsmu",
+        "body": [
+            "FNsmu(${1:port_number})"
+        ],
+        "description": "FNsmu(port_number)"
+    },
+    "Force_i": {
+        "prefix": "forcei",
+        "body": [
+            "Force_i(${1:SMU_port_address}, ${2:pin_number}, ${3:, ${4:0},${5:0}})$0"
+        ],
+        "description": "Force_i(SMU_port_address, pin_number, [,output_current, output_range, voltage_compliance])"
+    },
+    "Force_mes": {
+        "prefix": "forcemes",
+        "body": [
+            "Force_mes(${1:Source_port}, ${2:Source_pin}, ${3:measurment_port}, ${4:mearsurement_pin}, ${5:output_mode}, ${6:output_value}, ${7:measurement_value_name})"
+        ],
+        "description": "Force_mes(Source_port, Source_pin, measurment_port, mearsurement_pin, output_mode, output_value, measurement_value_name)"
+    },
+    "Force_v": {
+        "prefix": "forcev",
+        "body": [
+            "Force_v(${1:SMU_addr}, ${2:pin_number}${3:, ${4:v_out},${5:range},${6:i_comp}})$0"
+        ],
+        "description": "Force_v(SMU port address, pin_number, [,output_voltage,output_range,current_compliance])"
+    },
     "set_cv function (with defaults)": {
         "prefix": "setcv",
         "body": [
-            "CALL set_cv(${1:mode}, ${2:Vstart}, ${3:Vstop}, ${4:Nsteps}${5:, ${6:0}, ${7:0}, ${8:0}})$0"
+            "set_cv(${1:mode}, ${2:Vstart}, ${3:Vstop}, ${4:Nsteps}${5:, ${6:0}, ${7:0}, ${8:0}})$0"
         ],
         "description": "set_cv(mode, Vstart, Vstop, Nsteps [, Vhold=0, Vdelay=0, stop_mode=0])"
     }
