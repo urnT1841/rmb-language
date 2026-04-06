@@ -1,7 +1,6 @@
 # rmb-syntax README
 
-この拡張機能は HP Basic (RMB:Rocky Mountain Basic) の Syntax highlight および snippetを提供するものです。会社に転がっていた資料から作っており，当たり前ですが "HP,Agilent,Keysight"とは何の関係もありません。ご留意ください。
-なお，自分が満足する時点で完了です。不足点は各自で補ってください。
+この拡張機能は HP Basic (RMB:Rocky Mountain Basic) の Syntax highlight および snippetを提供するものです。，当たり前ですが "HP,Agilent,Keysight"とは何の関係もありません。ご留意ください。なお，自分が満足する時点で完了です。不足点は各自で補ってください。
 
 ## Features
 - RMB Syntax Highlighting (Keywords, IO Commands, Line Numbers, etc)
