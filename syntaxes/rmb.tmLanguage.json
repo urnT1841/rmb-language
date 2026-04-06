@@ -3,27 +3,118 @@
 	"name": "rmb",
 	"scopeName": "source.rmb",
 	"patterns": [
-		{ "include": "#numbers" },
-		{ "include": "#comments" },
-		{ "include": "#strings" },
-		{ "include": "#keywords" },
-		{ "include": "#io-commands" },
-		{ "include": "#types" }
+		{
+			"include": "#numbers"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#device-params"
+		},
+		{
+			"include": "#user-functions"
+		},
+		{
+			"include": "#tis-functions"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#io-commands"
+		},
+		{
+			"include": "#types"
+		}
 	],
 	"repository": {
-		"keywords": {
+		"user-functions": {
 			"patterns": [
-				{ "include": "#keyword.control.rmb" },
-				{ "include": "#keyword.other.rmb" }
+				{
+					"comment": "1. SUB定義行（ラベル付き）：行頭名、SUB、関数名を着色",
+					"match": "^\\s*([0-9]+)?\\s*([a-zA-Z_][a-zA-Z0-9_]*)\\s*(:)\\s*(?i)(SUB)\\b\\s+([a-zA-Z_][a-zA-Z0-9_]*)",
+					"captures": {
+						"1": {
+							"name": "constant.numeric.line-number.rmb"
+						},
+						"2": {
+							"name": "entity.name.function.rmb"
+						},
+						"3": {
+							"name": "punctuation.separator.label.rmb"
+						},
+						"4": {
+							"name": "keyword.control.rmb"
+						},
+						"5": {
+							"name": "entity.name.function.rmb"
+						}
+					}
+				},
+				{
+					"comment": "2. ジャンプラベル定義（例 Err_jump:）：SUBが続かない単独ラベル",
+					"match": "^\\s*([0-9]+)?\\s*([a-zA-Z_][a-zA-Z0-9_]*)(:)(?!\\s*(?i)SUB\\b)",
+					"captures": {
+						"1": {
+							"name": "constant.numeric.line-number.rmb"
+						},
+						"2": {
+							"name": "constant.other.symbol.rmb"
+						},
+						"3": {
+							"name": "punctuation.separator.label.rmb"
+						}
+					}
+				},
+				{
+					"comment": "3. GOTO/GOSUBのジャンプ先（呼び出し側）",
+					"match": "(?i)(?<=\\b(?:GOTO|GOSUB)\\s+)([a-zA-Z_][a-zA-Z0-9_]*)",
+					"name": "entity.name.label.rmb"
+				},
+				{
+					"comment": "4. 数学関数（ABS, SQRなど）",
+					"name": "support.function.math.rmb",
+					"match": "(?i)\\b(ABS|SQR|EXP|LOG|LN|SIN|COS|TAN|ASN|ACS|ATN|INT|SGN|VAL|CHR|STR)\\b"
+				},
+				{
+					"comment": "5. 関数呼び出し（括弧の直前）",
+					"match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)(?=\\s*\\()",
+					"name": "variable.function.rmb"
+				}
 			]
 		},
-		"keyword.control.rmb": {
-			"name": "keyword.control.rmb",
-			"match": "(?i)\\b(IF|THEN|ELSE|END IF|FOR|NEXT|WHILE|END WHILE|SELECT|CASE|END SELECT|EXIT|HALT|STOP|END|SUB|SUBEXIT|SUBEND)\\b"
+		"tis-functions": {
+			"patterns": [
+				{
+					"name": "support.function.tis.rmb",
+					"match": "(?i)\\b(Address3458|Auto_cal|Ch_sw_off_pg|Ch_sw_on_pg|Cmu_adjust|Connect_chuck|Connect_ex|Connect_hf|Connect_hf_th|Connect_sr|Connect_th|Conv_mode|Conv_ztr|Disable_corr|Disable_port84|Disable_spa|Dispoff_spa|Dispon_spa|Error_display|Error_info|Error_info_pg|FNAux|FNCmh|FNCml|FNCmu84|FNGcmu|FNGnd|FNGsmu|FNHf|FNPg|FNPort|FNSmu|FNUnitsmu|FNVm|FNVs|Force_i|Force_meas|Force_pg|Force_v|Force_v84|Frequency|Frequency84|Get_freq|Get_freq_step|Get_modelname|Gnd_open_guard|High_voltage_state|Htos|Htoy|Htoz|Init_pg|Init_spa|Init_system|Is_on_line|Ivt_measure|Ivt_set_iv|Ivt_set_sync|Ivt_set_t|Load_corr_data|Load_hfportmap|Load_pg|Load_pg_conf|Long_cal|Measure_bdv|Measure_cmu84|Measure_cpg|Measure_csrs|Measure_i|Measure_ileak|Measure_m|Measure_p|Measure_spa|Measure_v|Measure_vth|Measure_v3458|Measure_ztr|Open_corr84|Open_corr_th|P_ivt_measure|P_ivt_set_iv|P_ivt_status|P_measure_m|P_measure_vth|Port_status|P_rsweep_miv|P_set_bdv_srch|P_set_iv|P_set_lsearch|P_sweep_miv|Range_mode|Rfs_measure_s2|Rsearch|Rsweep_iv|Set_adc|Set_bdv|Set_cmu|Set_cv|Set_freq|Set_iv|Set_pbias|Set_piv|Set_vth|Short_cal|Spgu_mode|Stand_by_port|Start_pg|Stop_pg|Sweep_cv|Sweep_iv|Sweep_miv|Sync_th|Wait_th)\\b"
+				}
+			]
 		},
-		"keyword.other.rmb": {
-			"name": "keyword.other.rmb",
-			"match": "(?i)\\b(LET|PRINT|DISP|OUTPUT|ENTER|ASSIGN|SCRATCH|LOAD|SAVE|GET|RE-SAVE)\\b"
+		"device-params": {
+			"patterns": [
+				{
+					"comment": "測定対象の端子・パラメータ名",
+					"name": "variable.other.constant.rmb",
+					"match": "(?i)\\b(Gate|Vg|Vgs|Ig|Drain|Vd|Vds|Id|Ids|Source|Vs|Is|Sub|Subs|Substrate|Vsub|Isub|Vstart|Vstop|Vstep|Idspec|mode)\\b"
+				}
+			]
+		},
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.rmb",
+					"match": "(?i)\\b(IF|THEN|ELSE|END IF|FOR|NEXT|WHILE|END WHILE|SELECT|CASE|END SELECT|EXIT|HALT|STOP|END|SUB|SUBEXIT|SUBEND)\\b"
+				},
+				{
+					"name": "keyword.other.rmb",
+					"match": "(?i)\\b(LET|PRINT|DISP|OUTPUT|ENTER|ASSIGN|SCRATCH|LOAD|SAVE|GET|RE-SAVE|OPTION\\s+BASE)\\b"
+				}
+			]
 		},
 		"types": {
 			"patterns": [
@@ -37,7 +128,7 @@
 			"patterns": [
 				{
 					"name": "support.function.io.rmb",
-					"match": "(?i)\\b(CONNECT|DISCONNECT|CONTROL|STATUS|ABORT|CLEAR|REMOTE|LOCAL|LOCAL LOCKOUT|DISABLE_PORT)\\b"
+					"match": "(?i)\\b(CONNECT|DISCONNECT|CONTROL|STATUS|ABORT|CLEAR|REMOTE|LOCAL|LOCAL\\s+LOCKOUT|DISABLE_PORT)\\b"
 				}
 			]
 		},
@@ -62,9 +153,15 @@
 		},
 		"numbers": {
 			"patterns": [
-				{ "include": "#number-line" },
-				{ "include": "#number-float" },
-				{ "include": "#number-decimal" }
+				{
+					"include": "#number-line"
+				},
+				{
+					"include": "#number-float"
+				},
+				{
+					"include": "#number-decimal"
+				}
 			]
 		},
 		"number-line": {
@@ -76,8 +173,8 @@
 			]
 		},
 		"number-float": {
-    		"name": "constant.numeric.float.rmb",
-    		"match": "\\b[0-9]+(\\.[0-9]+)?[eE][+-]?[0-9]+\\b"
+			"name": "constant.numeric.float.rmb",
+			"match": "\\b[0-9]+(\\.[0-9]+)?[eE][+-]?[0-9]+\\b"
 		},
 		"number-decimal": {
 			"name": "constant.numeric.rmb",
